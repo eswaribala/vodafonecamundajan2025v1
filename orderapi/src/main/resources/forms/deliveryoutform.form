@@ -1,0 +1,32 @@
+{
+  "components": [
+    {
+      "text": "Delivery Out Notification",
+      "type": "text",
+      "layout": {
+        "row": "Row_0w7heen",
+        "columns": null
+      },
+      "id": "Field_12jtp0u"
+    },
+    {
+      "label": "Waiting For Delivery Kindly Collect",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0op85kv",
+        "columns": null
+      },
+      "id": "Field_0y1kovn",
+      "key": "waiting"
+    }
+  ],
+  "type": "default",
+  "id": "Form_0jxtizn",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.29.0"
+  },
+  "schemaVersion": 17
+}

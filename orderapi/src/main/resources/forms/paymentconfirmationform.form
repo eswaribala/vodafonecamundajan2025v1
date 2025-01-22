@@ -1,0 +1,54 @@
+{
+  "components": [
+    {
+      "text": "Confirm The Payment",
+      "type": "text",
+      "layout": {
+        "row": "Row_0qwll09",
+        "columns": null
+      },
+      "id": "Field_1il7fp7"
+    },
+    {
+      "label": "Order Amount",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1sk3pyx",
+        "columns": null
+      },
+      "id": "Field_0653xvq",
+      "key": "orderAmountCaptured",
+      "readonly": true
+    },
+    {
+      "label": "Amount To be Paid",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1o0b1ki",
+        "columns": null
+      },
+      "id": "Field_1sg0kqt",
+      "key": "calculatedAmount",
+      "readonly": true
+    },
+    {
+      "label": "Confirm To Proceed With Payment Processing",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0hq9sk0",
+        "columns": null
+      },
+      "id": "Field_0pmee7m",
+      "key": "confimpayment"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1vlyku2",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.29.0"
+  },
+  "schemaVersion": 17
+}

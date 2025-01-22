@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_DRD" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.29.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <decision id="Decision_Offer_DMN" name="Offer DMN">
+    <decisionTable id="DecisionTable_0u3f3tj" hitPolicy="FIRST">
+      <input id="Input_1" label="productName">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>productName</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_18gxhts" label="season">
+        <inputExpression id="LiteralExpression_11ipl6y" typeRef="string">
+          <text>season</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1dcolmg" label="billingAddress">
+        <inputExpression id="LiteralExpression_1l9coky" typeRef="string">
+          <text>billingAddress</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="calculatedAmount" name="calculatedAmount" typeRef="number" biodi:width="192" />
+      <rule id="DecisionRule_05ce7ef">
+        <inputEntry id="UnaryTests_0oekpjr">
+          <text>"laptop"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mgfy7p">
+          <text>"Christmas"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tkxl8x">
+          <text>"Chennai"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12prjkk">
+          <text>0.15 * number(orderAmountCaptured)</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qxqzof">
+        <inputEntry id="UnaryTests_0kqi83h">
+          <text>"mobile phone"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tan73x">
+          <text>"Christmas"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17d38ms">
+          <text>"Pondicherry"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qk08qh">
+          <text>0.15 * number(orderAmountCaptured)</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0swhybu">
+        <inputEntry id="UnaryTests_1tgiz6o">
+          <text>"laptop"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0q4wh6k">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1px6mi6">
+          <text>"New Delhi"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1y6r1uc">
+          <text>0.15 * number(orderAmountCaptured)</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0d3be9m">
+        <inputEntry id="UnaryTests_1i81jlk">
+          <text>"laptop"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1u825jd">
+          <text>"Winter"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gqp1hg">
+          <text>"Chennai"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pylpof">
+          <text>0.15 * number(orderAmountCaptured)</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w0045w">
+        <inputEntry id="UnaryTests_00ejyb3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0o2lcac">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04np0lb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1keje09">
+          <text>100000</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_Offer_DMN">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

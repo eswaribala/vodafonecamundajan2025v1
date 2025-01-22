@@ -1,0 +1,71 @@
+{
+  "components": [
+    {
+      "label": "Billing Address",
+      "type": "textarea",
+      "id": "Textarea_1",
+      "validate": {
+        "minLength": 3,
+        "maxLength": 100,
+        "required": true
+      },
+      "key": "billingAddress",
+      "layout": {
+        "row": "row_1",
+        "columns": null
+      }
+    },
+    {
+      "label": "Amount To Be Paid",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0kghfec",
+        "columns": null
+      },
+      "id": "Field_09xmbak",
+      "key": "orderAmountCaptured",
+      "readonly": true
+    },
+    {
+      "label": "Payment Method",
+      "values": [
+        {
+          "value": "Cash",
+          "label": "Cash"
+        },
+        {
+          "value": "Credit Card",
+          "label": "Credit Card"
+        },
+        {
+          "value": "Debit Card",
+          "label": "Debit Card"
+        },
+        {
+          "value": "UPI Payment",
+          "label": "UPI Payment"
+        }
+      ],
+      "type": "select",
+      "id": "Select_0",
+      "validate": {
+        "required": true
+      },
+      "key": "paymentMethod",
+      "layout": {
+        "row": "Row_1pvsb00",
+        "columns": null
+      }
+    }
+  ],
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.29.0"
+  },
+  "schemaVersion": 17,
+  "id": "Form_Payment",
+  "generated": true,
+  "type": "default"
+}

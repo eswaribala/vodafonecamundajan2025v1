@@ -1,0 +1,32 @@
+{
+  "components": [
+    {
+      "text": "# Delivery Acceptance",
+      "type": "text",
+      "layout": {
+        "row": "Row_09t5y4w",
+        "columns": null
+      },
+      "id": "Field_1yilj47"
+    },
+    {
+      "label": "Delivery Accepted",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0q3pgsu",
+        "columns": null
+      },
+      "id": "Field_1k04pww",
+      "key": "deliveryAcceptance"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Delivey_Confirmation",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.29.0"
+  },
+  "schemaVersion": 17
+}

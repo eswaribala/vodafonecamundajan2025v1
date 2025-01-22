@@ -1,0 +1,32 @@
+{
+  "components": [
+    {
+      "text": "Kafka Consumer",
+      "type": "text",
+      "layout": {
+        "row": "Row_0vc6bst",
+        "columns": null
+      },
+      "id": "Field_1kt8swh"
+    },
+    {
+      "label": "Confirm Message ",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0e0neb1",
+        "columns": null
+      },
+      "id": "Field_1hb7nxq",
+      "key": "confirm"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1x3vd9l",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.29.0"
+  },
+  "schemaVersion": 17
+}

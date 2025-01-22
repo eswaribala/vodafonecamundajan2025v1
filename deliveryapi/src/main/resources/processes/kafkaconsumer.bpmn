@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1jqdepg" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.29.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <bpmn:process id="Process_Kafka_Consumer" name="Kafka Consumer Process" isExecutable="true">
+    <bpmn:endEvent id="Event_0xic667">
+      <bpmn:incoming>Flow_0b0i6qt</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:intermediateCatchEvent id="Event_05nggiu" zeebe:modelerTemplate="io.camunda.connectors.inbound.KafkaIntermediate.v1" zeebe:modelerTemplateVersion="6" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTgnIGhlaWdodD0nMTgnIHZpZXdCb3g9JzAgMCAyNTYgNDE2JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHByZXNlcnZlQXNwZWN0UmF0aW89J3hNaWRZTWlkJz4KICAgIDxwYXRoIGQ9J00yMDEuODE2IDIzMC4yMTZjLTE2LjE4NiAwLTMwLjY5NyA3LjE3MS00MC42MzQgMTguNDYxbC0yNS40NjMtMTguMDI2YzIuNzAzLTcuNDQyIDQuMjU1LTE1LjQzMyA0LjI1NS0yMy43OTcgMC04LjIxOS0xLjQ5OC0xNi4wNzYtNC4xMTItMjMuNDA4bDI1LjQwNi0xNy44MzVjOS45MzYgMTEuMjMzIDI0LjQwOSAxOC4zNjUgNDAuNTQ4IDE4LjM2NSAyOS44NzUgMCA1NC4xODQtMjQuMzA1IDU0LjE4NC01NC4xODQgMC0yOS44NzktMjQuMzA5LTU0LjE4NC01NC4xODQtNTQuMTg0LTI5Ljg3NSAwLTU0LjE4NCAyNC4zMDUtNTQuMTg0IDU0LjE4NCAwIDUuMzQ4LjgwOCAxMC41MDUgMi4yNTggMTUuMzg5bC0yNS40MjMgMTcuODQ0Yy0xMC42Mi0xMy4xNzUtMjUuOTExLTIyLjM3NC00My4zMzMtMjUuMTgydi0zMC42NGMyNC41NDQtNS4xNTUgNDMuMDM3LTI2Ljk2MiA0My4wMzctNTMuMDE5QzEyNC4xNzEgMjQuMzA1IDk5Ljg2MiAwIDY5Ljk4NyAwIDQwLjExMiAwIDE1LjgwMyAyNC4zMDUgMTUuODAzIDU0LjE4NGMwIDI1LjcwOCAxOC4wMTQgNDcuMjQ2IDQyLjA2NyA1Mi43Njl2MzEuMDM4QzI1LjA0NCAxNDMuNzUzIDAgMTcyLjQwMSAwIDIwNi44NTRjMCAzNC42MjEgMjUuMjkyIDYzLjM3NCA1OC4zNTUgNjguOTR2MzIuNzc0Yy0yNC4yOTkgNS4zNDEtNDIuNTUyIDI3LjAxMS00Mi41NTIgNTIuODk0IDAgMjkuODc5IDI0LjMwOSA1NC4xODQgNTQuMTg0IDU0LjE4NCAyOS44NzUgMCA1NC4xODQtMjQuMzA1IDU0LjE4NC01NC4xODQgMC0yNS44ODMtMTguMjUzLTQ3LjU1My00Mi41NTItNTIuODk0di0zMi43NzVhNjkuOTY1IDY5Ljk2NSAwIDAgMCA0Mi42LTI0Ljc3NmwyNS42MzMgMTguMTQzYy0xLjQyMyA0Ljg0LTIuMjIgOS45NDYtMi4yMiAxNS4yNCAwIDI5Ljg3OSAyNC4zMDkgNTQuMTg0IDU0LjE4NCA1NC4xODQgMjkuODc1IDAgNTQuMTg0LTI0LjMwNSA1NC4xODQtNTQuMTg0IDAtMjkuODc5LTI0LjMwOS01NC4xODQtNTQuMTg0LTU0LjE4NHptMC0xMjYuNjk1YzE0LjQ4NyAwIDI2LjI3IDExLjc4OCAyNi4yNyAyNi4yNzFzLTExLjc4MyAyNi4yNy0yNi4yNyAyNi4yNy0yNi4yNy0xMS43ODctMjYuMjctMjYuMjdjMC0xNC40ODMgMTEuNzgzLTI2LjI3MSAyNi4yNy0yNi4yNzF6bS0xNTguMS00OS4zMzdjMC0xNC40ODMgMTEuNzg0LTI2LjI3IDI2LjI3MS0yNi4yN3MyNi4yNyAxMS43ODcgMjYuMjcgMjYuMjdjMCAxNC40ODMtMTEuNzgzIDI2LjI3LTI2LjI3IDI2LjI3cy0yNi4yNzEtMTEuNzg3LTI2LjI3MS0yNi4yN3ptNTIuNTQxIDMwNy4yNzhjMCAxNC40ODMtMTEuNzgzIDI2LjI3LTI2LjI3IDI2LjI3cy0yNi4yNzEtMTEuNzg3LTI2LjI3MS0yNi4yN2MwLTE0LjQ4MyAxMS43ODQtMjYuMjcgMjYuMjcxLTI2LjI3czI2LjI3IDExLjc4NyAyNi4yNyAyNi4yN3ptLTI2LjI3Mi0xMTcuOTdjLTIwLjIwNSAwLTM2LjY0Mi0xNi40MzQtMzYuNjQyLTM2LjYzOCAwLTIwLjIwNSAxNi40MzctMzYuNjQyIDM2LjY0Mi0zNi42NDIgMjAuMjA0IDAgMzYuNjQxIDE2LjQzNyAzNi42NDEgMzYuNjQyIDAgMjAuMjA0LTE2LjQzNyAzNi42MzgtMzYuNjQxIDM2LjYzOHptMTMxLjgzMSA2Ny4xNzljLTE0LjQ4NyAwLTI2LjI3LTExLjc4OC0yNi4yNy0yNi4yNzFzMTEuNzgzLTI2LjI3IDI2LjI3LTI2LjI3IDI2LjI3IDExLjc4NyAyNi4yNyAyNi4yN2MwIDE0LjQ4My0xMS43ODMgMjYuMjcxLTI2LjI3IDI2LjI3MXonCiAgICAgICAgICBzdHlsZT0nZmlsbDojMjMxZjIwJy8+Cjwvc3ZnPg==">
+      <bpmn:extensionElements>
+        <zeebe:properties>
+          <zeebe:property name="inbound.type" value="io.camunda:connector-kafka-inbound:1" />
+          <zeebe:property name="authenticationType" value="credentials" />
+          <zeebe:property name="authentication.username" value="ARZZ7SWL3TLC5K6E" />
+          <zeebe:property name="authentication.password" value="BedKSUqvzkdqw4wo0A4cc3fDlJqEYEpzuNWx8rGi2yGN5TFSTzQpLmRQKOfBBaRs" />
+          <zeebe:property name="topic.bootstrapServers" value="pkc-619z3.us-east1.gcp.confluent.cloud:9092" />
+          <zeebe:property name="topic.topicName" value="vodaorder" />
+          <zeebe:property name="groupId" value="springboot-group-1" />
+          <zeebe:property name="autoOffsetReset" value="latest" />
+          <zeebe:property name="schemaStrategy.type" value="noSchema" />
+          <zeebe:property name="consumeUnmatchedEvents" value="true" />
+          <zeebe:property name="correlationKeyExpression" value="=(value.name)" />
+          <zeebe:property name="deduplicationModeManualFlag" value="false" />
+          <zeebe:property name="deduplicationMode" value="AUTO" />
+          <zeebe:property name="resultVariable" value="result" />
+          <zeebe:property name="resultExpression" value="" />
+        </zeebe:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0t319k5</bpmn:incoming>
+      <bpmn:outgoing>Flow_0b0i6qt</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1uzqai7" messageRef="Message_0zyy7n1" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_0b0i6qt" sourceRef="Event_05nggiu" targetRef="Event_0xic667" />
+    <bpmn:startEvent id="Event_Kafka_Consumer" name="Kafka Cosumer Start Event">
+      <bpmn:extensionElements>
+        <zeebe:properties>
+          <zeebe:property name="inbound.type" value="io.camunda:connector-kafka-inbound:1" />
+          <zeebe:property name="authenticationType" value="credentials" />
+          <zeebe:property name="authentication.username" value="ARZZ7SWL3TLC5K6E" />
+          <zeebe:property name="authentication.password" value="BedKSUqvzkdqw4wo0A4cc3fDlJqEYEpzuNWx8rGi2yGN5TFSTzQpLmRQKOfBBaRs" />
+          <zeebe:property name="topic.bootstrapServers" value="pkc-619z3.us-east1.gcp.confluent.cloud:9092" />
+          <zeebe:property name="topic.topicName" value="topic_0" />
+          <zeebe:property name="groupId" value="delivery_group" />
+          <zeebe:property name="offsets" value="=[10,14,16]" />
+          <zeebe:property name="autoOffsetReset" value="latest" />
+          <zeebe:property name="schemaStrategy.type" value="noSchema" />
+          <zeebe:property name="activationCondition" value="=(value.name = &#34;pen&#34;)" />
+          <zeebe:property name="consumeUnmatchedEvents" value="true" />
+          <zeebe:property name="correlationRequired" value="required" />
+          <zeebe:property name="correlationKeyExpression" value="=value.name" />
+          <zeebe:property name="messageTtl" value="PT10M" />
+          <zeebe:property name="deduplicationModeManualFlag" value="false" />
+          <zeebe:property name="deduplicationMode" value="AUTO" />
+          <zeebe:property name="resultVariable" value="result" />
+          <zeebe:property name="resultExpression" value="={&#10;  &#34;orderName&#34;: value.name,&#10;  &#34;orderId&#34;:value.id,&#10;  &#34;amount&#34;:value.cost&#10;}" />
+        </zeebe:properties>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0t319k5</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0t319k5" sourceRef="Event_Kafka_Consumer" targetRef="Event_05nggiu" />
+  </bpmn:process>
+  <bpmn:message id="Message_0jgtkiq" name="715404c6-3163-43cf-ac8b-9a389ce2f38a" />
+  <bpmn:message id="Message_1g3ou5w" name="2bcb651e-1b06-4d9d-9d09-dc8d152ab402" />
+  <bpmn:message id="Message_0zyy7n1" name="c84c901c-f322-4102-8395-0f614921489f" zeebe:modelerTemplate="io.camunda.connectors.inbound.KafkaIntermediate.v1">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=name" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Kafka_Consumer">
+      <bpmndi:BPMNShape id="Event_0xic667_di" bpmnElement="Event_0xic667" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <dc:Bounds x="542" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1vyyegu_di" bpmnElement="Event_05nggiu">
+        <dc:Bounds x="312" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1vfuvw0_di" bpmnElement="Event_Kafka_Consumer">
+        <dc:Bounds x="152" y="82" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="134" y="125" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0b0i6qt_di" bpmnElement="Flow_0b0i6qt">
+        <di:waypoint x="348" y="100" />
+        <di:waypoint x="542" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0t319k5_di" bpmnElement="Flow_0t319k5">
+        <di:waypoint x="188" y="100" />
+        <di:waypoint x="312" y="100" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

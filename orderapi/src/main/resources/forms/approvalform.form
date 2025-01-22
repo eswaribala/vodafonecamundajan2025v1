@@ -1,0 +1,32 @@
+{
+  "components": [
+    {
+      "text": "Refund Approval",
+      "type": "text",
+      "layout": {
+        "row": "Row_0j3wifw",
+        "columns": null
+      },
+      "id": "Field_1g2lk5v"
+    },
+    {
+      "label": "Accepting the refund amount",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_126gkkv",
+        "columns": null
+      },
+      "id": "Field_014b67k",
+      "key": "accept"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Refund",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.29.0"
+  },
+  "schemaVersion": 17
+}

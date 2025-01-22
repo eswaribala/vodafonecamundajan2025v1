@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1v39m42" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.29.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <bpmn:process id="Process_Payment" name="Payment Process" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="UserTaskForm_141cddf">{
+  "components": [
+    {
+      "label": "Billing Address",
+      "type": "textarea",
+      "id": "Textarea_1",
+      "validate": {
+        "minLength": 3,
+        "maxLength": 100,
+        "required": true
+      },
+      "key": "billingAddress",
+      "layout": {
+        "row": "row_1",
+        "columns": null
+      }
+    },
+    {
+      "label": "Amount To Be Paid",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0kghfec",
+        "columns": null
+      },
+      "id": "Field_09xmbak",
+      "key": "orderAmountCaptured",
+      "readonly": true
+    },
+    {
+      "label": "Payment Method",
+      "values": [
+        {
+          "value": "Cash",
+          "label": "Cash"
+        },
+        {
+          "value": "Credit Card",
+          "label": "Credit Card"
+        },
+        {
+          "value": "Debit Card",
+          "label": "Debit Card"
+        },
+        {
+          "value": "UPI Payment",
+          "label": "UPI Payment"
+        }
+      ],
+      "type": "select",
+      "id": "Select_0",
+      "validate": {
+        "required": true
+      },
+      "key": "paymentMethod",
+      "layout": {
+        "row": "Row_1pvsb00",
+        "columns": null
+      }
+    }
+  ],
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.29.0"
+  },
+  "schemaVersion": 17,
+  "id": "Form_Payment",
+  "generated": true,
+  "type": "default"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="UserTaskForm_08vd5te">{
+  "components": [
+    {
+      "text": "Confirm The Payment",
+      "type": "text",
+      "layout": {
+        "row": "Row_0qwll09",
+        "columns": null
+      },
+      "id": "Field_1il7fp7"
+    },
+    {
+      "label": "Order Amount",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1sk3pyx",
+        "columns": null
+      },
+      "id": "Field_0653xvq",
+      "key": "orderAmountCaptured",
+      "readonly": true
+    },
+    {
+      "label": "Amount To be Paid",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1o0b1ki",
+        "columns": null
+      },
+      "id": "Field_1sg0kqt",
+      "key": "calculatedAmount",
+      "readonly": true
+    },
+    {
+      "label": "Confirm To Proceed With Payment Processing",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0hq9sk0",
+        "columns": null
+      },
+      "id": "Field_0pmee7m",
+      "key": "confimpayment"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1vlyku2",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.29.0"
+  },
+  "schemaVersion": 17
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1ntt6ql</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_Information_Form" name="Biiling Information Form">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_141cddf" />
+        <zeebe:assignmentDefinition assignee="demo" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_09gnbsi</bpmn:incoming>
+      <bpmn:outgoing>Flow_1glz9cw</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_Payment_Gateway" name="Payment Gateway">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="paymentgateway" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_08g1mb1</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rcvdlc</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_0dzyufo">
+      <bpmn:incoming>Flow_1rcvdlc</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1rcvdlc" sourceRef="Activity_Payment_Gateway" targetRef="Event_0dzyufo" />
+    <bpmn:sequenceFlow id="Flow_1ntt6ql" sourceRef="StartEvent_1" targetRef="Activity_Extract_Order_Amount" />
+    <bpmn:sequenceFlow id="Flow_09gnbsi" sourceRef="Activity_Extract_Order_Amount" targetRef="Activity_Information_Form" />
+    <bpmn:serviceTask id="Activity_Extract_Order_Amount" name="Extract Order Amount">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="extractorderamount" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ntt6ql</bpmn:incoming>
+      <bpmn:outgoing>Flow_09gnbsi</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1glz9cw" sourceRef="Activity_Information_Form" targetRef="Activity_Discount_Decision" />
+    <bpmn:businessRuleTask id="Activity_Discount_Decision" name="Discount Decision ">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="Decision_Offer_DMN" resultVariable="calculatedAmount" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1glz9cw</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bp361w</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:sequenceFlow id="Flow_0bp361w" sourceRef="Activity_Discount_Decision" targetRef="Activity_Confirm_Payment" />
+    <bpmn:userTask id="Activity_Confirm_Payment" name="Confirm The Payment">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="demo" />
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_08vd5te" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0bp361w</bpmn:incoming>
+      <bpmn:outgoing>Flow_08g1mb1</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_08g1mb1" sourceRef="Activity_Confirm_Payment" targetRef="Activity_Payment_Gateway" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Payment">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <dc:Bounds x="182" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1anwq23_di" bpmnElement="Activity_Information_Form" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <dc:Bounds x="440" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0spm0ee_di" bpmnElement="Activity_Payment_Gateway" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <dc:Bounds x="970" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0dzyufo_di" bpmnElement="Event_0dzyufo" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <dc:Bounds x="1112" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ni357d_di" bpmnElement="Activity_Extract_Order_Amount" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <dc:Bounds x="270" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_030cpgd_di" bpmnElement="Activity_Discount_Decision" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <dc:Bounds x="610" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_16i56y6_di" bpmnElement="Activity_Confirm_Payment" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <dc:Bounds x="780" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1rcvdlc_di" bpmnElement="Flow_1rcvdlc">
+        <di:waypoint x="1070" y="100" />
+        <di:waypoint x="1112" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ntt6ql_di" bpmnElement="Flow_1ntt6ql">
+        <di:waypoint x="218" y="100" />
+        <di:waypoint x="270" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09gnbsi_di" bpmnElement="Flow_09gnbsi">
+        <di:waypoint x="370" y="100" />
+        <di:waypoint x="440" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1glz9cw_di" bpmnElement="Flow_1glz9cw">
+        <di:waypoint x="540" y="100" />
+        <di:waypoint x="610" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bp361w_di" bpmnElement="Flow_0bp361w">
+        <di:waypoint x="710" y="100" />
+        <di:waypoint x="780" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08g1mb1_di" bpmnElement="Flow_08g1mb1">
+        <di:waypoint x="880" y="100" />
+        <di:waypoint x="970" y="100" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

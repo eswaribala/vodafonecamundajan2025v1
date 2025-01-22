@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1po2peh" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.29.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <bpmn:process id="Process_Refund" name="Refund Compensation Process" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="UserTaskForm_2ff9oim">{
+  "components": [
+    {
+      "text": "Refund Approval",
+      "type": "text",
+      "layout": {
+        "row": "Row_0j3wifw",
+        "columns": null
+      },
+      "id": "Field_1g2lk5v"
+    },
+    {
+      "label": "Accepting the refund amount",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_126gkkv",
+        "columns": null
+      },
+      "id": "Field_014b67k",
+      "key": "accept"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Refund",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.29.0"
+  },
+  "schemaVersion": 17
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1x0v74a</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1x0v74a" sourceRef="StartEvent_1" targetRef="Activity_Refund_Approval" />
+    <bpmn:userTask id="Activity_Refund_Approval" name="Refund Approval">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="demo" />
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_2ff9oim" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1x0v74a</bpmn:incoming>
+      <bpmn:outgoing>Flow_1bwa54o</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1bwa54o" sourceRef="Activity_Refund_Approval" targetRef="Event_Refund_Rejected" />
+    <bpmn:endEvent id="Event_0ebonmq">
+      <bpmn:incoming>Flow_11ddjpk</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_11ddjpk" sourceRef="Event_Refund_Rejected" targetRef="Event_0ebonmq" />
+    <bpmn:intermediateThrowEvent id="Event_Refund_Rejected" name="Refund Rejected">
+      <bpmn:incoming>Flow_1bwa54o</bpmn:incoming>
+      <bpmn:outgoing>Flow_11ddjpk</bpmn:outgoing>
+      <bpmn:compensateEventDefinition id="CompensateEventDefinition_0dunn5w" activityRef="Activity_Refund_Approval" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:boundaryEvent id="Event_1oqlb6x" attachedToRef="Activity_Refund_Approval">
+      <bpmn:compensateEventDefinition id="CompensateEventDefinition_10eamwe" />
+    </bpmn:boundaryEvent>
+    <bpmn:serviceTask id="Activity_Refund_Rejected" name="Refund Rejected" isForCompensation="true">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="refundreject" />
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:association id="Association_18fm4gs" associationDirection="One" sourceRef="Event_1oqlb6x" targetRef="Activity_Refund_Rejected" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Refund">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <dc:Bounds x="182" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ynqmwu_di" bpmnElement="Activity_Refund_Approval" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <dc:Bounds x="270" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ebonmq_di" bpmnElement="Event_0ebonmq" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <dc:Bounds x="512" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1yqgkyg_di" bpmnElement="Event_Refund_Rejected" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <dc:Bounds x="422" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="400" y="145" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ywt84j_di" bpmnElement="Activity_Refund_Rejected" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <dc:Bounds x="390" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_18fm4gs_di" bpmnElement="Association_18fm4gs">
+        <di:waypoint x="320" y="178" />
+        <di:waypoint x="320" y="240" />
+        <di:waypoint x="390" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1rg24rw_di" bpmnElement="Event_1oqlb6x" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <dc:Bounds x="302" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1x0v74a_di" bpmnElement="Flow_1x0v74a">
+        <di:waypoint x="218" y="120" />
+        <di:waypoint x="270" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bwa54o_di" bpmnElement="Flow_1bwa54o">
+        <di:waypoint x="370" y="120" />
+        <di:waypoint x="422" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11ddjpk_di" bpmnElement="Flow_11ddjpk">
+        <di:waypoint x="458" y="120" />
+        <di:waypoint x="512" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
